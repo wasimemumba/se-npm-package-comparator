@@ -1,0 +1,66 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  
+  .landing {
+ 
+    h1{
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+  }
+
+
+
+  .inputContainer{
+    position: relative;
+
+
+    .BreadCrum{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      position: absolute;
+      padding: 0px 6px;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      background-color: gray;
+      border-radius: 20px;
+
+    }
+
+    input{
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border:  1px solid #ccc;
+      border-radius: 3%;
+      
+    }
+
+    button{
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      padding-inline-start: 12px;
+      
+    }
+
+  }
+
+  

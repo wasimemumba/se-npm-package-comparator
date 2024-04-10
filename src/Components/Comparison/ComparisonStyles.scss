@@ -1,0 +1,114 @@
+.Result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #f4f4f4;
+    box-shadow: 1px 3px 10px rgba(124, 91, 190, 1);
+
+}
+.DetailsContainer{
+
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    box-shadow: 1px 3px 10px rgba(124, 91, 190, 1);
+
+
+.Details{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+   
+    p{
+        text-align: start;
+    }
+}
+
+.Stats{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 1rem;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
+    
+
+    .StatResult{
+        width: 75px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ccc;
+        gap: 0.5rem;
+        border-radius: 5px;
+        background-color: #f4f4f4;
+        box-shadow: 1px 3px 10px rgba(124, 91, 190, 1);
+        padding: 1.5rem;
+    }
+}
+
+.Languages{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+}
+
+}
+
+
+@media screen and (max-width: 990px){
+
+    @media screen and (max-width: 990px) {
+        .DetailsContainer{
+            .Details {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                
+                .DetailsContent {
+                    padding: 0rem 2rem; 
+                    p {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+      }
+}
+
+@media screen and (max-width: 500px){
+    .DetailsContainer{
+        .Details{
+            .DetailsContent{
+                padding: 0rem 1rem;
+            }
+        }
+        .Stats{
+            flex-direction: column;
+            gap: 1rem;
+            .StatResult{
+                width: 100%;
+            }
+        }
+        .Languages{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          
+        }
+    }
+}
