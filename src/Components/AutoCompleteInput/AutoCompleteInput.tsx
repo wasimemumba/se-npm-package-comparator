@@ -36,8 +36,12 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
         }));
         setOptions(newOptions);
       } catch (error: any) {
-        console.log(error);
-        toast.error(error.message);
+        if (axios.isAxiosError(error)) {
+          console.log(error.status);
+          toast.error(error.message + "\n Please try again later");
+        } else {
+          toast.error("Something went wrong Please try again later");
+        }
       } finally {
         setLoading(false);
       }
