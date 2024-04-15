@@ -49,6 +49,7 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
 
   //Debounce in useEffect
   useEffect(() => {
+    console.log(keyword);
     const getOptions = setTimeout(async () => {
       if (keyword.length < 2) {
         setOptions([]);
@@ -107,6 +108,9 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
         }}
       >
         <Select
+          onClick={() => {
+            setKeyword("");
+          }}
           mode="multiple"
           allowClear
           maxCount={2}
@@ -119,7 +123,11 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
               if (e.key === "Backspace") {
                 return prev.slice(0, -1);
               }
-              return prev + e.key;
+              // Check if the key is a digit or a letter
+              if (e.key.length === 1) {
+                return prev + e.key.toLocaleLowerCase();
+              }
+              return prev; // Ignore other characters
             });
           }}
           onBlur={() => {
