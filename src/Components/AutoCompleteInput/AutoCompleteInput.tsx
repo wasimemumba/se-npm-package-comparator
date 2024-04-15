@@ -118,7 +118,7 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
           placeholder="Please select"
           onChange={handleChange}
           options={options}
-          onKeyDown={(e) => {
+          onInputKeyDown={(e) => {
             setKeyword((prev) => {
               if (e.key === "Backspace") {
                 return prev.slice(0, -1);
