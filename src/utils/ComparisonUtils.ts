@@ -34,8 +34,8 @@ export const CalculateWinner : CalculateWinnerType  = (Package1 , Package2)   =>
     } else {
       
       return {
-        result :`${Package2.collected.metadata.name} is ${(
-            Package2Score / Package1Score
+        result :`${Package1.collected.metadata.name} is ${(
+            Package1Score / Package2Score
           ).toFixed(2)} times better.`,
         index : 0
       }
