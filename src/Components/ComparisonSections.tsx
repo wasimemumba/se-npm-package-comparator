@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useMyContext } from "../Context/SelectedPacakgesContext";
-import axios from "axios";
+// import { useMyContext } from "../Context/SelectedPacakgesContext";
+// import axios from "axios";
 import CompareTable from "./CompareTable/CompareTable";
 import LineChart from "./LineChart.tsx/LineChart";
 import { Alert, Spin } from "antd";
@@ -10,8 +10,8 @@ import { dummyPackageData } from "../data";
 const ComparisonSections: React.FC = () => {
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [Error, setError] = useState<string>("");
-  const { selected } = useMyContext();
+  const [Error] = useState<string>("");
+  // const { selected } = useMyContext();
 
   useEffect(() => {
     // Simulate loading delay

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./ComparisonStyles.scss";
 import { Tag } from "antd";
-import axios from "axios";
-import { CalculateWinner, convertToApiUrl } from "../../utils/ComparisonUtils";
+// import axios from "axios";
+import { CalculateWinner } from "../../utils/ComparisonUtils";
 
 type ComparisonProps = {
   data: any;
