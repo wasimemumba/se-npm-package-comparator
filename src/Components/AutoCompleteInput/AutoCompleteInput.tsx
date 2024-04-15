@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Select } from "antd";
 import type { SelectProps } from "antd";
 import axios from "axios";
+import { AutoCompleteOptions } from "../../data";
 import toast from "react-hot-toast";
 import { useMyContext } from "../../Context/SelectedPacakgesContext";
 
@@ -18,35 +19,39 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
 
   const { selected, setSelected } = useMyContext();
 
-  //Debounce in useEffect
   useEffect(() => {
-    const getOptions = setTimeout(async () => {
-      if (keyword.length < 2) {
-        setOptions([]);
-        return;
-      }
-      setLoading(true);
-      try {
-        const response = await axios.get(
-          `https://api.npms.io/v2/search?q=${keyword}`
-        );
-        const newOptions = response.data.results.map((element: any) => ({
-          value: element.package.name,
-          label: element.package.name,
-        }));
-        setOptions(newOptions);
-      } catch (error: any) {
-        console.log(error);
-        toast.error(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }, 500);
+    setOptions(AutoCompleteOptions);
+  }, []);
 
-    return () => {
-      clearTimeout(getOptions);
-    };
-  }, [keyword]);
+  //Debounce in useEffect
+  // useEffect(() => {
+  //   const getOptions = setTimeout(async () => {
+  //     if (keyword.length < 2) {
+  //       setOptions([]);
+  //       return;
+  //     }
+  //     setLoading(true);
+  //     try {
+  //       const response = await axios.get(
+  //         `https://api.npms.io/v2/search?q=${keyword}`
+  //       );
+  //       const newOptions = response.data.results.map((element: any) => ({
+  //         value: element.package.name,
+  //         label: element.package.name,
+  //       }));
+  //       setOptions(newOptions);
+  //     } catch (error: any) {
+  //       console.log(error);
+  //       toast.error(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }, 500);
+
+  //   return () => {
+  //     clearTimeout(getOptions);
+  //   };
+  // }, [keyword]);
 
   const handleChange = (value: string[]) => {
     setKeyword("");

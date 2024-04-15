@@ -11,7 +11,7 @@ type ComparisonProps = {
 const Comparison: React.FC<ComparisonProps> = ({ data }) => {
   const [result, setResult] = useState<string>("");
   const [index, setIndex] = useState<number>(0);
-  const [languages, setLanguages] = useState<string[]>([]);
+  // const [languages, setLanguages] = useState<string[]>([]);
 
   useEffect(() => {
     const { result, index } = CalculateWinner(data[0], data[1]);
@@ -20,20 +20,22 @@ const Comparison: React.FC<ComparisonProps> = ({ data }) => {
     setResult(result);
   }, []);
 
-  useEffect(() => {
-    const getLanguages = async () => {
-      const githubUrl: string = data[index].collected.metadata.links.repository;
+  // useEffect(() => {
+  //   const getLanguages = async () => {
+  //     const githubUrl: string = data[index].collected.metadata.links.repository;
 
-      const apiUrl = convertToApiUrl(githubUrl);
-      try {
-        const result = await axios.get(apiUrl + "/languages");
-        setLanguages(Object.keys(result.data));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getLanguages();
-  }, [index]);
+  //     const apiUrl = convertToApiUrl(githubUrl);
+  //     try {
+  //       const result = await axios.get(apiUrl + "/languages");
+  //       setLanguages(Object.keys(result.data));
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   getLanguages();
+  // }, [index]);
+
+  const languages = ["JavaScript", "TypeScript", "HTML", "CSS"];
 
   return (
     <>
