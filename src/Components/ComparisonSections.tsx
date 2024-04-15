@@ -5,12 +5,23 @@ import CompareTable from "./CompareTable/CompareTable";
 import LineChart from "./LineChart.tsx/LineChart";
 import { Alert, Spin } from "antd";
 import Comparison from "./Comparison/Comparison";
+import { dummyPackageData } from "../data";
 
 const ComparisonSections: React.FC = () => {
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [Error, setError] = useState<string>("");
   const { selected } = useMyContext();
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timeout = setTimeout(() => {
+      setData(dummyPackageData);
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   // i think this approach is wrong
   // useEffect(() => {
@@ -32,35 +43,35 @@ const ComparisonSections: React.FC = () => {
   //   fetchData();
   // }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const promises = selected.map((element) => {
-          const response = axios.get(
-            `https://api.npms.io/v2/package/${element}`
-          );
-          return response;
-        });
-        const results = await Promise.all(promises);
-        const data = results.map((element) => element.data);
-        setData(data);
-      } catch (error: any) {
-        if (error.response.status === 404) {
-          setError(
-            `${error.response.config.url.replace(
-              /^https:\/\/api\.npms\.io\/v2\/package\//,
-              ""
-            )} Package not found`
-          );
-        } else {
-          setError("Something went wrong");
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [selected]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const promises = selected.map((element) => {
+  //         const response = axios.get(
+  //           `https://api.npms.io/v2/package/${element}`
+  //         );
+  //         return response;
+  //       });
+  //       const results = await Promise.all(promises);
+  //       const data = results.map((element) => element.data);
+  //       setData(data);
+  //     } catch (error: any) {
+  //       if (error.response.status === 404) {
+  //         setError(
+  //           `${error.response.config.url.replace(
+  //             /^https:\/\/api\.npms\.io\/v2\/package\//,
+  //             ""
+  //           )} Package not found`
+  //         );
+  //       } else {
+  //         setError("Something went wrong");
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [selected]);
 
   return (
     <>
