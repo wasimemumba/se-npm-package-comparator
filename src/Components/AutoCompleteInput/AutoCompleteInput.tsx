@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Select } from "antd";
 import type { SelectProps } from "antd";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
 import { useMyContext } from "../../Context/SelectedPacakgesContext";
 
@@ -49,7 +49,7 @@ const AutoCompleteInput2: React.FC<AutoCompleteInputPropType> = ({
 
   //Debounce in useEffect
   useEffect(() => {
-    console.log(keyword);
+    // console.log(keyword);
     const getOptions = setTimeout(async () => {
       if (keyword.length < 2) {
         setOptions([]);
